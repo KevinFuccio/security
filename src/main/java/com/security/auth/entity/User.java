@@ -11,6 +11,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Setter
 @Getter
@@ -32,7 +34,8 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    @OneToMany(mappedBy = "utente")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "utente", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	private List<Dispositivo> dispositivi;
     
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

@@ -11,11 +11,15 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+
 import com.security.auth.entity.ERole;
 import com.security.auth.entity.Role;
+import com.security.auth.entity.User;
 import com.security.auth.repository.RoleRepository;
 import com.security.auth.repository.UserRepository;
 import com.security.auth.service.AuthService;
+import com.security.auth.service.DispositivoService;
+import com.security.auth.service.UserService;
 
 
 
@@ -26,6 +30,8 @@ public class AuthRunner implements ApplicationRunner {
 	@Autowired UserRepository userRepository;
 	@Autowired PasswordEncoder passwordEncoder;
 	@Autowired AuthService authService;
+	@Autowired DispositivoService dispositivoService;
+	@Autowired UserService userService;
 	
 	private Set<Role> adminRole;
 	private Set<Role> moderatorRole;
@@ -35,7 +41,14 @@ public class AuthRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Run...");
 //		setRoleDefault();
-		
+//		for (int i = 0; i < 20; i++) {
+//			
+//			dispositivoService.createDispositivoRandom();
+//		}
+//		
+////		userRepository.save(u);
+//		userService.changePermissions("pivot@example.com", ERole.ROLE_ADMIN);
+//		dispositivoService.assegnaDispositivi(userRepository.findAll());
 	}
 	
 	private void setRoleDefault() {
